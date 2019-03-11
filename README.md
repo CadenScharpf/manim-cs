@@ -1,4 +1,7 @@
-# Manim - Mathematical Animation Engine
+# Manim-cs Mathematical Animation Engine
+
+This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for depicting complex computer algorithms.
+
 [![Documentation Status](https://readthedocs.org/projects/manim/badge/?version=latest)](https://manim.readthedocs.io/en/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
 
