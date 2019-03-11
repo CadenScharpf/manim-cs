@@ -1,4 +1,4 @@
-from big_ol_pile_of_manim_imports import *
+gifrom big_ol_pile_of_manim_imports import *
 import os
 import pyclbr
 
