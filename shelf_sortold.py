@@ -1,9 +1,7 @@
-gifrom big_ol_pile_of_manim_imports import *
+from big_ol_pile_of_manim_imports import *
 import os
 import pyclbr
 
-
-class ShelfSort():
 
 
 class SelectionSort(Scene):

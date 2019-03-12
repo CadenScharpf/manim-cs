@@ -108,3 +108,7 @@ import math
 
 from PIL import Image
 from colour import Color
+
+# Imports from my_library
+
+from my_library.animation.sorting_transformations import *
