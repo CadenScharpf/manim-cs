@@ -2,56 +2,11 @@ from big_ol_pile_of_manim_imports import *
 import os
 import pyclbr
 
-
-class ShelfSort(Scene):
-
-    CONFIG = {
-        "initial_color" : "#5CD0B3",
-        "i_color" : "#ffcc00",
-        "j_color" : WHITE,
-        "min_idx_color" : "#3b8774",
-
-        "elements" : 
-
-        "swaptime" : .5,
-        "runtime" : .5
-    }
-
-    def construct(self): 
-        self.introduce_element_group()
-        self.introduce_labels()
-        self.initialize_counters()
-
-    def introduce_element_group(self):
-        self.element_group = self.get_line_group(self.start_x)
-
-    def introduce_labels(self):
-
-    def initialize_counter(self):
-
-    def get_element_group(self):
-
-    def get_labels(self)
-
-
-
-
 class SelectionSort(Scene):
-
-    CONFIG = 
-        # Counters #
-        "loops" : 0
-
-
-
-        "elements" : list("4", "1", "9", "7", "2", "3", "6", "8", "0")
-    }
-
     def construct(self):
-
-
-
-    
+        element = get_array_element("4")
+        self.add(element)
+        self.play(ShowCreation(element))
 
 
 if __name__ == "__main__":

@@ -26,12 +26,14 @@ class BackgroundRectangle(SurroundingRectangle):
         "color": BLACK,
         "stroke_width": 0,
         "fill_opacity": 0.75,
-        "buff": 0
+        "buff": SMALL_BUFF,
     }
 
     def __init__(self, mobject, **kwargs):
         SurroundingRectangle.__init__(self, mobject, **kwargs)
         self.original_fill_opacity = self.fill_opacity
+        
+        
 
     def pointwise_become_partial(self, mobject, a, b):
         self.set_fill(opacity=b * self.original_fill_opacity)

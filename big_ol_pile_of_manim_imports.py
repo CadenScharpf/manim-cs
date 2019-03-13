@@ -112,3 +112,6 @@ from colour import Color
 # Imports from my_library
 
 from my_library.animation.sorting_transformations import *
+
+# Imports from shelf_sort
+from active_projects.shelf_sort.shelf_sort import *
