@@ -1,12 +1,12 @@
 from big_ol_pile_of_manim_imports import *
+from big_ol_pile_of_caden_imports import *
+from my_library.array.array import ArrayElement
 import os
 import pyclbr
 
 
-
-def get_array_element(key):
-    result = SingleStringTexMobject(key)
-    result.add_background_rectangle(color = PINK)
+def get_array_element(value):
+    result = ArrayElement("3", .5)
     return result
 
 """

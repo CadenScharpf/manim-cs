@@ -1,27 +1,94 @@
 from big_ol_pile_of_manim_imports import *
+from big_ol_pile_of_caden_imports import *
 import os
 import pyclbr
 
+####################################################
+# -ArrayElement object
+# -Creates a single array element with a displayable
+#  value. 
+# -Accepts arguments for color, buffer(width/2), and 
+#  position.
+####################################################
 class ArrayElement(SingleStringTexMobject):
     CONFIG = {
         "value" : 0,
         "color" : WHITE,
-        "width" : 1,
+        "buffer" : SMALL_BUFF,
     }
-    def __init__(self, value, color = WHITE, width = 1:
+    def __init__(self, value, buffer, color = WHITE,):
         SingleStringTexMobject.__init__(self, value)
-        self.add_element_enclosure(self, 1, buff=1)
+        self.add_element_enclosure(.5, color=color)
 
-
-    def add_element_enclosure(self, buffer, color=BLACK, opacity=0.75, **kwargs):
-        from manimlib.mobject.shape_matchers import BackgroundRectangle
-        self.background_rectangle = BackgroundRectangle(
-            self, color=color,
+    # Adds the BackgroundEnclosure to mobject 'self'
+    def add_element_enclosure(self, buffer, color=WHITE, opacity=0.75, **kwargs):
+        self.background_rectangle = BackgroundEnclosure(
+            self, buffer, color=color,
             fill_opacity=opacity,
+
             **kwargs
         )
         self.add_to_back(self.background_rectangle)
+        
         return self
+
+
+####################################################
+# -SurroundingEnclosure class for ArrayElement
+# -
+# -Accepts arguments for color, buffer(width/2), and 
+#  position.
+####################################################
+class SurroundingEnclosure(Rectangle):
+    CONFIG = {
+        "color": WHITE,
+        "buff": SMALL_BUFF,
+    }
+
+    def __init__(self, mobject, buffer, **kwargs):
+        self.buff = buffer
+        digest_config(self, kwargs)
+        kwargs["width"] = 2 * self.buff
+        kwargs["height"] = 2 * self.buff
+        Rectangle.__init__(self, **kwargs)
+        self.move_to(mobject)
+
+class BackgroundEnclosure(SurroundingRectangle):
+    CONFIG = {
+        "color": WHITE,
+        "stroke_width": 0,
+        "fill_opacity": 0.75,
+        "buff": SMALL_BUFF,
+    }
+
+    def __init__(self, mobject, buffer, **kwargs):
+        self.buff = buffer 
+        SurroundingEnclosure.__init__(self, mobject, buffer, **kwargs)
+        self.original_fill_opacity = self.fill_opacity
+        
+    def pointwise_become_partial(self, mobject, a, b):
+        self.set_fill(opacity=b * self.original_fill_opacity)
+        return self
+
+    def set_style_data(self,
+                       stroke_color=None,
+                       stroke_width=None,
+                       fill_color=None,
+                       fill_opacity=None,
+                       family=True
+                       ):
+        # Unchangable style, except for fill_opacity
+        VMobject.set_style_data(
+            self,
+            stroke_color=BLACK,
+            stroke_width=0,
+            fill_color=BLACK,
+            fill_opacity=fill_opacity
+        )
+        return self
+
+    def get_fill_color(self):
+        return Color(self.color)
         
 
 

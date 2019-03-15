@@ -1,10 +1,12 @@
 from big_ol_pile_of_manim_imports import *
+from my_library.array.array import *
 import os
 import pyclbr
 
 class SelectionSort(Scene):
     def construct(self):
         element = get_array_element("4")
+        print(element.get_width())
         self.add(element)
         self.play(ShowCreation(element))
 
