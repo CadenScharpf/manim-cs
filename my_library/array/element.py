@@ -1,5 +1,6 @@
 from big_ol_pile_of_manim_imports import *
 from big_ol_pile_of_caden_imports import *
+from my_library.animation.sorting_transformations import *
 import os
 import pyclbr
 
@@ -29,8 +30,6 @@ class ArrayElement(SingleStringTexMobject):
             **kwargs
         )
         self.add_to_back(self.background_rectangle)
-        
-        return self
 
 
 ####################################################

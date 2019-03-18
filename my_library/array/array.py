@@ -6,7 +6,7 @@ import pyclbr
 
 
 def get_array_element(value):
-    result = ArrayElement("3", .5)
+    result = ArrayElement(value, .5)
     return result
 
 """
