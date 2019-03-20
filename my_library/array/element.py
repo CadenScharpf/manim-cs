@@ -17,7 +17,8 @@ class ArrayElement(SingleStringTexMobject):
         "color" : WHITE,
         "buffer" : SMALL_BUFF,
     }
-    def __init__(self, value, buffer, color = WHITE,):
+    def __init__(self, value, buffer=SMALL_BUFF, color = WHITE,): # value, buffer, color = WHITE,
+        self.value = value
         SingleStringTexMobject.__init__(self, value)
         self.add_element_enclosure(.5, color=color)
 
@@ -50,6 +51,7 @@ class SurroundingEnclosure(Rectangle):
         kwargs["width"] = 2 * self.buff
         kwargs["height"] = 2 * self.buff
         Rectangle.__init__(self, **kwargs)
+        print(kwargs["width"])
         self.move_to(mobject)
 
 class BackgroundEnclosure(SurroundingRectangle):

@@ -44,7 +44,7 @@ class SelectionSort(Scene):
         loops_text = SingleStringTexMobject("loops = " + str(loops))
         loops_text_location = (UP*3 + LEFT*5)
 
-        elements = list(map(SingleStringTexMobject, [
+        elements = Array(map(SingleStringTexMobject, [
             "4", "1", "9", "7", "2", "3", "6", "8", "0"
         ]))
 

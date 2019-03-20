@@ -6,10 +6,15 @@ import pyclbr
 
 class SelectionSort(Scene):
     def construct(self):
-        element = get_array_element("7")
-        print(element.get_width())
-        self.add(element)
-        self.play(ShowCreation(element))
+        elements = list(map(ArrayElement, [
+            "4", "1", "9", "7", "2", "3", "6", "8", "0"
+        ]))
+        
+        array = Array()
+        array.add(elements)
+        array.arrange()
+        self.add(array)
+        self.play(ShowCreation(array))
 
 
 if __name__ == "__main__":
