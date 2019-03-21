@@ -5,11 +5,10 @@ import os
 import pyclbr
 
 ####################################################
-# -ArrayElement object
-# -Creates a single array element with a displayable
-#  value. 
-# -Accepts arguments for color, buffer(width/2), and 
-#  position.
+# ArrayElement object
+# Creates a single array element with a displayable
+# value. 
+# Accepts arguments for color, buffer(width/2)
 ####################################################
 class ArrayElement(SingleStringTexMobject):
     CONFIG = {

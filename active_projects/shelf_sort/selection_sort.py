@@ -1,5 +1,6 @@
 from big_ol_pile_of_manim_imports import *
 from my_library.array.array import *
+from my_library.array.element import *
 from my_library.animation.sorting_transformations import *
 import os
 import pyclbr
@@ -16,7 +17,23 @@ class SelectionSort(Scene):
         self.add(array)
         self.play(ShowCreation(array))
 
+"""
 
+
+        #self.introduce_element_group()
+        #self.introduce_labels()
+        #self.initialize_counters()
+def introduce_element_group(self):
+    self.element_group = self.get_line_group(self.start_x)
+
+def introduce_labels(self):
+
+def initialize_counter(self):
+
+def get_element_group(self):
+
+def get_labels(self)
+"""
 if __name__ == "__main__":
     # Call this file at command line to make sure all scenes work with version of manim
     # type "python manim_tutorial_P37.py" at command line to run all scenes in this file
