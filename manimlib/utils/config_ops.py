@@ -23,7 +23,7 @@ def filtered_locals(caller_locals):
 def digest_config(obj, kwargs, caller_locals={}):
     """
     Sets init args and CONFIG values as local variables
-
+    
     The purpose of this function is to ensure that all
     configuration of any object is inheritable, able to
     be easily passed into instantiation, and is attached

@@ -8,87 +8,44 @@ import pyclbr
 # -ArrayElement
 # -Creates a single array element with a displayable
 #  value. 
-# -Accepts arguments for color, buffer(width/2)
-####################################################
+# -Accepts: 
+#   (1) Positional argument for: 'Key'
+#   (?) Arbitrary arguments for: 'fill_color', 'buff',
+#       'opacity'...etc
+# ####################################################
 class ArrayElement(SingleStringTexMobject):
     CONFIG = {
-        "value" : 0,
-        "color" : WHITE,
-        "buffer" : SMALL_BUFF,
+        "key" : 0,
+        "background_color" : WHITE,
+        "buff" : SMALL_BUFF,
     }
-    def __init__(self, value, **kwargs):
-        self.value = value
-        SingleStringTexMobject.__init__(self, value)
-        self.add_element_enclosure(.5, color=color)
+    def __init__(self, key, **kwargs):
+        digest_config(self, kwargs)
+        assert(isinstance(key, str))
+        self.key = key
+        super().__init__(key, **kwargs)
+        self.add_background_rectangle(self.background_color, self.buff)
 
-    # Adds the BackgroundEnclosure to mobject 'self'
-    def add_element_enclosure(self, buffer, color=WHITE, opacity=0.75, **kwargs):
-        self.background_rectangle = BackgroundEnclosure(
-            self, buffer, color=color,
+    # Background rectangle
+    def add_background_rectangle(self, color, buff, opacity=0.75, **kwargs):
+        # TODO, this does not behave well when the mobject has points,
+        # since it gets displayed on top
+        from manimlib.mobject.shape_matchers import BackgroundRectangle
+        self.background_rectangle = BackgroundRectangle(
+            self, color=color,
+            buff = buff,
             fill_opacity=opacity,
-
             **kwargs
         )
         self.add_to_back(self.background_rectangle)
-
-
-####################################################
-# -SurroundingEnclosure class for ArrayElement
-# -
-# -Accepts arguments for color, buffer(width/2), and 
-#  position.
-####################################################
-class SurroundingEnclosure(Rectangle):
-    CONFIG = {
-        "color": WHITE,
-        "buff": SMALL_BUFF,
-    }
-
-    def __init__(self, mobject, buffer, **kwargs):
-        self.buff = buffer
-        digest_config(self, kwargs)
-        kwargs["width"] = 2 * self.buff
-        kwargs["height"] = 2 * self.buff
-        Rectangle.__init__(self, **kwargs)
-        print(kwargs["width"])
-        self.move_to(mobject)
-
-class BackgroundEnclosure(SurroundingRectangle):
-    CONFIG = {
-        "color": WHITE,
-        "stroke_width": 0,
-        "fill_opacity": 0.75,
-        "buff": SMALL_BUFF,
-    }
-
-    def __init__(self, mobject, buffer, **kwargs):
-        self.buff = buffer 
-        SurroundingEnclosure.__init__(self, mobject, buffer, **kwargs)
-        self.original_fill_opacity = self.fill_opacity
-        
-    def pointwise_become_partial(self, mobject, a, b):
-        self.set_fill(opacity=b * self.original_fill_opacity)
         return self
 
-    def set_style_data(self,
-                       stroke_color=None,
-                       stroke_width=None,
-                       fill_color=None,
-                       fill_opacity=None,
-                       family=True
-                       ):
-        # Unchangable style, except for fill_opacity
-        VMobject.set_style_data(
-            self,
-            stroke_color=BLACK,
-            stroke_width=0,
-            fill_color=BLACK,
-            fill_opacity=fill_opacity
-        )
+    def add_background_rectangle_to_submobjects(self, **kwargs):
+        for submobject in self.submobjects:
+            submobject.add_background_rectangle(**kwargs)
         return self
 
-    def get_fill_color(self):
-        return Color(self.color)
-        
-
-
+    def add_background_rectangle_to_family_members_with_points(self, **kwargs):
+        for mob in self.family_members_with_points():
+            mob.add_background_rectangle(**kwargs)
+        return self
