@@ -16,7 +16,7 @@ class ArrayElement(SingleStringTexMobject):
         "color" : WHITE,
         "buffer" : SMALL_BUFF,
     }
-    def __init__(self, value, buffer=SMALL_BUFF, color = WHITE,): # value, buffer, color = WHITE,
+    def __init__(self, value, **kwargs):
         self.value = value
         SingleStringTexMobject.__init__(self, value)
         self.add_element_enclosure(.5, color=color)
