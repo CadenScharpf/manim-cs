@@ -22,6 +22,7 @@ class Array(Mobject):
         "j_color" : YELLOW
     }
     def __init__(self, *key_array, **kwargs):
+        print(key_array)
         if not all([isinstance(key, str) for key in key_array]):
             raise Exception("All keys must be of type string")
         digest_config(self, kwargs)
@@ -32,10 +33,12 @@ class Array(Mobject):
             "opacity" : self.opacity,
         }
 
-        self.element_list = get_element_list(*key_array, **self.element_styles)
+        self.element_list = get_element_list(self, *key_array, **self.element_styles)
         super().__init__(**kwargs)
         self.add(*self.element_list)
+        self.add_background_rectangle_to_submobjects(color=self.default_color,**self.element_styles)
 
+# Generate element array
 def get_element_list(self, *key_array, **styles):
     print("Generating array...")
     print(key_array)
@@ -45,3 +48,7 @@ def get_element_list(self, *key_array, **styles):
 
         element_list.append(ArrayElement(str(key), **styles))
     return element_list
+
+# Swap
+def swap(element):
+    element.move_to(UP)

@@ -21,10 +21,14 @@ class ArrayElement(SingleStringTexMobject):
     }
     def __init__(self, key, **kwargs):
         digest_config(self, kwargs)
+        self.styles = {
+            "color" : self.default_color,
+            "buff" : self.buff, 
+            "opacity" : self.opacity,
+        }
         assert(isinstance(key, str))
         self.key = key
         super().__init__(key, **kwargs)
-        self.add_background_rectangle(self.default_color, self.buff, self.opacity)
 
     # Background rectangle
     def add_background_rectangle(self, color, buff, opacity=0.75, **kwargs):
