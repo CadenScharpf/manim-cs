@@ -18,6 +18,6 @@ media
 manim.sublime-project
 manim.sublime-workspace
 media/
-
+venv/
 primes.py
 /media_dir.txt

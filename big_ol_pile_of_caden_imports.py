@@ -17,6 +17,6 @@ as a convenience for scripts creating scenes for videos.
 from my_library.animation.sorting_transformations import *
 
 # Array
+from my_library.array.array_element import *
 from my_library.array.array import *
-from my_library.array.element import *
 
