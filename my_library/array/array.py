@@ -8,9 +8,10 @@ import pyclbr
 # - Generates a centered array of ArrayElements given
 #   a string array of element keys
 # - Accepts: 
-#   (1) Positional argument for: 'key_array'
-#   (?) Arbitrary arguments for: 'default_color, 
-#       'buff', opacity', 'j_color', and 'i_color'
+#   (1) Positional array argument for: 'key_array'
+#   (?) Arbitrary arguments for: 'default_color'(hex), 
+#       'buff'(int), 'opacity'(double: 0<=opacity<=1), 
+#       'position_color(hex)', and 'idx_color(hex)'
 #####################################################
 class Array(Mobject):
     CONFIG = {
@@ -18,8 +19,8 @@ class Array(Mobject):
         "buff" : MED_LARGE_BUFF, 
         "opacity" : .75,
 
-        "i_color" : BLUE,
-        "j_color" : YELLOW
+        "idx_color" : BLUE,
+        "position_color" : YELLOW
     }
     def __init__(self, *key_array, **kwargs):
         print(key_array)
@@ -37,8 +38,14 @@ class Array(Mobject):
         super().__init__(**kwargs)
         self.add(*self.element_list)
         self.add_background_rectangle_to_submobjects(color=self.default_color,**self.element_styles)
+        self.arrange()
+        print(self.element_list)
 
-# Generate element array
+        # Swap
+    def swap(self, element_idx):
+        ApplyMethod(element_list[element_idx].move_to(UP))
+
+# Generate array_element list
 def get_element_list(self, *key_array, **styles):
     print("Generating array...")
     print(key_array)
@@ -49,6 +56,3 @@ def get_element_list(self, *key_array, **styles):
         element_list.append(ArrayElement(str(key), **styles))
     return element_list
 
-# Swap
-def swap(element):
-    element.move_to(UP)

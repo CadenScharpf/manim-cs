@@ -7,33 +7,24 @@ import pyclbr
 
 class SelectionSort(Scene):
     def construct(self):
-        elements = list(map(ArrayElement, [
-            "4", "1", "9", "7", "2", "3", "6", "8", "0"
-        ]))
-        
-        array = Array()
-        array.add(elements)
-        array.arrange()
-        self.add(array)
+
+     # Array Config
+        keys = ("11", "15", "12")
+        styles = {
+            "default_color" : GREEN,
+            "buff" : MED_LARGE_BUFF,
+            "opacity" : .75
+        }
+    # Initialize Array Object
+        array = Array(*key_array, **styles)
+    #Show Array
         self.play(ShowCreation(array))
 
-"""
+        self.play(array.swap(2)
+    
 
+    print(keys.len())
 
-        #self.introduce_element_group()
-        #self.introduce_labels()
-        #self.initialize_counters()
-def introduce_element_group(self):
-    self.element_group = self.get_line_group(self.start_x)
-
-def introduce_labels(self):
-
-def initialize_counter(self):
-
-def get_element_group(self):
-
-def get_labels(self)
-"""
 if __name__ == "__main__":
     # Call this file at command line to make sure all scenes work with version of manim
     # type "python manim_tutorial_P37.py" at command line to run all scenes in this file
