@@ -43,7 +43,7 @@ class Array(Mobject):
 
         # Swap
     def swap(self, element_idx):
-        ApplyMethod(element_list[element_idx].move_to(UP))
+        ApplyMethod(self.element_list[element_idx].move_to(UP))
 
 # Generate array_element list
 def get_element_list(self, *key_array, **styles):

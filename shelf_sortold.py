@@ -147,7 +147,7 @@ class SelectionSort(Scene):
                 self.wait(1)
                 
             self.play(
-                MyFadeToColor(elements[min_idx], initial_color),
+                FadeToColor(elements[min_idx], initial_color),
                 MyFadeToColor(elements[i], initial_color),
                 run_time = runtime
             )
