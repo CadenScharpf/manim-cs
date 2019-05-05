@@ -5,30 +5,53 @@ from my_library.animation.sorting_transformations import *
 import os
 import pyclbr
 
+# Default Array Configuration
+ARRAY_CONFIG = {
+    "default_color" : BLUE,
+    "buff" : MED_LARGE_BUFF,
+    "opacity" : .75
+    }
+# Index Color Configuration
+IDX_COLOR = YELLOW_C
+SUBIDX_COLOR = LIGHT_GREY
+
+# Array Configuration Variables
+keys = ("11", "15", "12", "16", "14", "17")
+
 class ShelfSortScene(Scene):
     def construct(self):
 
-     # Array Config
-        keys = ("11", "15", "12")
-        styles = {
-            "default_color" : BLUE,
-            "buff" : MED_LARGE_BUFF,
-            "opacity" : .75
-        }
-    # Initialize Array Object
-        array = Array(*keys, **styles)
-    #Show Array
+        # Initialize Array Object
+        array = Array(*keys, **ARRAY_CONFIG)
+
+        #Show Array
         self.play(ShowCreation(array)) 
         print(array.element_list[0].key)
         print(array.element_list[1].key)
         print(array.element_list[2].key)
         self.selection_sort(array)
 
-        # Make the softing algorithms as methods of this scene
-
     def selection_sort(self, array):
-        for i in range(len(array.element_list)):
-            self.play(FadeToColor(array.element_list[i],RED))
+        i = 0
+        while i < len(array.element_list):
+            min_idx = i
+            self.fade_to(array, i, IDX_COLOR)
+
+            j = i+1
+            while j < len(array.element_list):
+                if int(array.element_list[j].key) < int(array.element_list[min_idx].key) and min_idx == i:
+                    self.fade_to(array, i, ARRAY_CONFIG['default_color'])
+                elif int(array.element_list[j].key) < int(array.element_list[min_idx].key):
+                    min_idx = j
+                self.flash(array, j, SUBIDX_COLOR)
+                j = j+1
+
+            if min_idx != i:
+                self.swap(array, i, min_idx)
+                print("ho")
+            i = i+1
+
+                
             
 
     def swap(self, array, elm1, elm2):
@@ -42,12 +65,18 @@ class ShelfSortScene(Scene):
             array.element_list[elm1].move_to,elm2_center,
             array.element_list[elm2].move_to,elm1_center
         )
-        temp = array.element_list[0]
-        array.element_list[0] = array.element_list[1]
-        array.element_list[1] = temp
-        print(array.element_list[0].key)
-        print(array.element_list[1].key)
-        print(array.element_list[2].key)
+        temp = array.element_list[elm1]
+        array.element_list[elm1] = array.element_list[elm2]
+        array.element_list[elm2] = temp
+
+    def fade_to(self, array, idx, color):
+        self.play(FadeToColor(array.element_list[idx],color))
+
+    def flash(self, array, idx, color):
+        old_color = array.element_list[idx].default_color
+        self.play(FadeToColor(array.element_list[idx],color))
+        self.play(FadeToColor(array.element_list[idx],old_color))
+    
         
         
         

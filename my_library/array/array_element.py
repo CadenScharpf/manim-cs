@@ -32,8 +32,7 @@ class ArrayElement(SingleStringTexMobject):
 
     # Background rectangle
     def add_background_rectangle(self, color, buff, opacity=0.75, **kwargs):
-        # TODO, this does not behave well when the mobject has points,
-        # since it gets displayed on top
+ 
         from manimlib.mobject.shape_matchers import BackgroundRectangle
         self.background_rectangle = BackgroundRectangle(
             self, color=color,
