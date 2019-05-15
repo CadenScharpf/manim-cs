@@ -70,13 +70,13 @@ class ShelfSortScene(Scene):
         array.element_list[elm2] = temp
 
     def fade_to(self, array, idx, color):
-        self.play(FadeToColor(array.element_list[idx],color))
+        self.play(MyFadeToColor(array.element_list[idx],color))
 
     def flash(self, array, idx, color):
         old_color = array.element_list[idx].default_color
-        self.play(FadeToColor(array.element_list[idx],color))
-        self.play(FadeToColor(array.element_list[idx],old_color))
-    
+        self.play(MyFadeToColor(array.element_list[idx],color))
+        self.play(MyFadeToColor(array.element_list[idx],old_color))
+
         
         
         
