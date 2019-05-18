@@ -10,12 +10,10 @@ import pyclbr
 # - Accepts: 
 #   (1) Positional array argument for: 'key_array'
 #   (?) Arbitrary arguments for: 'color'(hex), 
-#       'buff'(int), 'opacity'(double: 0<=opacity<=1), 
-#       'position_color(hex)', and 'idx_color(hex)'
+#       'buff'(width), 'opacity'(double: 0 <=
+#       opacity <= 1), 
 #####################################################
 class Array(Mobject):
-    self.x = "s"
-    x = "s"
     def __init__(self, *key_array, **kwargs):
         print(key_array)
         if not all([isinstance(key, str) for key in key_array]):
@@ -23,7 +21,7 @@ class Array(Mobject):
         digest_config(self, kwargs)
 
         self.element_styles = {
-            "background_color" : self.color,
+            "default_color" : self.color,
             "buff" : self.buff, 
             "opacity" : self.opacity,
         }

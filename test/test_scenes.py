@@ -9,7 +9,7 @@ import pyclbr
 keys = ("11", "15", "12", "16", "14", "17")
 
 ARRAY_CONFIG = {
-    "background_color" : BLUE,
+    "default_color" : BLUE,
     "buff" : MED_LARGE_BUFF,
     "opacity" : .75
 }
@@ -19,13 +19,12 @@ class TestScenes(Scene):
     def construct(self):
         # Initialize Array Object
         array = Array(*keys, **ARRAY_CONFIG)
-        digest_config()
         #Show Array
         self.play(ShowCreation(array)) 
+        self.play(Flash(array[0],GREEN))
 
-        self.play(FadeTo(array[0],GREEN))
-        self.play(FadeToOrigionalColor(array[0]))
-        print(array[0].submobjects)
+
+
 
 if __name__ == "__main__":
     # Call this file at command line to make sure all scenes work with version of manim

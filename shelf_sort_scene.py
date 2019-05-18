@@ -1,7 +1,7 @@
 from big_ol_pile_of_manim_imports import *
 from my_library.array.array import *
 from my_library.array.array_element import *
-from my_library.animation.sorting_transformations import *
+from my_library.animation.transformations import *
 import os
 import pyclbr
 
@@ -69,13 +69,13 @@ class ShelfSortScene(Scene):
         array.element_list[elm1] = array.element_list[elm2]
         array.element_list[elm2] = temp
 
-    def fade_to(self, array, idx, color):
-        self.play(MyFadeToColor(array.element_list[idx],color))
+    def fade_to(self, array, element, color):
+        self.play(FadeTo(array.element_list[element],color))
 
-    def flash(self, array, idx, color):
-        old_color = array.element_list[idx].default_color
-        self.play(MyFadeToColor(array.element_list[idx],color))
-        self.play(MyFadeToColor(array.element_list[idx],old_color))
+    def flash(self, array, element, color):
+        old_color = array.element_list[element].default_color
+        self.play(FadeTo(array.element_list[element],color))
+        self.play(FadeToOrigionalColor(array.element_list[element]))
 
         
         

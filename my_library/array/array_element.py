@@ -3,6 +3,7 @@ from my_library.animation.transformations import *
 import os
 import pyclbr
 
+
 ####################################################
 # -ArrayElement
 # -Creates a single array element with a displayable
@@ -17,7 +18,7 @@ class ArrayElement(SingleStringTexMobject):
     def __init__(self, key, **kwargs):
         #Instance variables
         CONFIG = {
-            "background_color" : BLUE,
+            "default_color" : WHITE,
             "buff" : .5,
             "opacity" : .75
          }
@@ -27,7 +28,7 @@ class ArrayElement(SingleStringTexMobject):
         super().__init__(key, **kwargs)
 
         #background rectangle
-        self.add_background_rectangle(self.background_color, self.buff, self.opacity)
+        self.add_background_rectangle(self.default_color, self.buff, self.opacity)
 
     # Background rectangle
     def add_background_rectangle(self, color, buff, opacity=0.75, **kwargs):
@@ -53,7 +54,7 @@ class ArrayElement(SingleStringTexMobject):
         return self
 
     # Color 
-    def set_color(self, color=YELLOW_C, family=True):
+    def set_color(self, color, family=True):
         """
         Condition is function which takes in one arguments, (x, y, z).
         Here it just recurses to submobjects, but in subclasses this
@@ -62,10 +63,13 @@ class ArrayElement(SingleStringTexMobject):
         """
         if family:
             for submob in self.submobjects:
-                submob.set_color(self.background_color, family=family)
-        self.color = self.background_color
+                if not isinstance(submob, TexSymbol):
+                    submob.set_color(color, family=family)
+        self.color = color
+
         return self
 
     def to_original_color(self):
-        self.set_color(self.background_color)
+        self.set_color(self.default_color)
+        self.color = self.default_color
         return self
