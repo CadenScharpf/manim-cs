@@ -1,15 +1,35 @@
-# Manim-cs Computational Animation Engine
+# Manim-CS Computational Animation Engine
 
 This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for rendering sorting algorithm, tree structure, and memory simulations.
 
 Manim-CS is powered by the Manim Animation Engine and and the included Math Object library. To install, follow the official doccumentation below.
 
+## Version 1.0
+
+Version 1.0 brings added support for rendering arrays. The following classes have been added to the library:
+
+### array_element.py
+
+The ArrayElement class(extended from Mobject) generates an onscreen element that can be added to an "array". Currently ArrayElements can be distinguished by their key-value(as an SVGMobject) or size. Accepts the following init arguments:
+
+(1) Positional argument for: 'key'
+(?) Arbitrary arguments for: 'color', 'buff', 'opacity'...etc
+
+### array.py
+
+The Array class acts as a container for the ArrayElements and contains the functionality for:
+
+  - Generating ArrayElemts given a list of keys(string)
+  - Centering elements on screen
+  - Initializing counters
+
+### transformations.py
+
+Transformations is a collection of animation classes that allow any changes made to an Array to be rendered on screen. All classes from this file are derived from the ApplyMethod class which should be called as a self.play parameter when rendering MObject methods.
 
 
 [![Documentation Status](https://readthedocs.org/projects/manim/badge/?version=latest)](https://manim.readthedocs.io/en/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
-
-Manim is an animation engine for explanatory math videos. It's used to create precise animations programmatically.
 
 ## Installation
 Manim runs on python 3.7. You can install the python requirements with
