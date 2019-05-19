@@ -15,7 +15,6 @@ import pyclbr
 #####################################################
 class Array(Mobject):
     def __init__(self, *key_array, **kwargs):
-        print(key_array)
         if not all([isinstance(key, str) for key in key_array]):
             raise Exception("All keys must be of type string")
         digest_config(self, kwargs)

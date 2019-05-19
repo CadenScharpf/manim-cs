@@ -2,6 +2,7 @@ from big_ol_pile_of_manim_imports import *
 from my_library.array.array import *
 from my_library.array.array_element import *
 from my_library.animation.transformations import *
+from manimlib.constants import *
 import os
 import pyclbr
 
@@ -20,8 +21,11 @@ class TestScenes(Scene):
         # Initialize Array Object
         array = Array(*keys, **ARRAY_CONFIG)
         #Show Array
-        self.play(ShowCreation(array)) 
-        self.play(Flash(array[0],GREEN))
+        self.play(ShowCreation(array))
+        
+
+    def fade_to(self, array, element, color):
+        self.play(FadeTo(array.element_list[element],color))
 
 
 

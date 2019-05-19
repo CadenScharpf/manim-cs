@@ -1,6 +1,10 @@
-# Manim-cs Mathematical Animation Engine
+# Manim-cs Computational Animation Engine
 
-This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for depicting complex computer algorithms.
+This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for rendering sorting algorithm, tree structure, and memory simulations.
+
+Manim-CS is powered by the Manim Animation Engine and and the included Math Object library. To install, follow the official doccumentation below.
+
+
 
 [![Documentation Status](https://readthedocs.org/projects/manim/badge/?version=latest)](https://manim.readthedocs.io/en/latest/?badge=latest)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
@@ -15,7 +19,7 @@ Manim runs on python 3.7. You can install the python requirements with
 
 ### Directly
 ```sh
-git clone https://github.com/3b1b/manim.git
+git clone https://github.com/CadenScharpf/manim-cs.git
 cd manim
 python3 -m pip install -r requirements.txt
 python3 -m manim example_scenes.py SquareToCircle -pl
@@ -24,7 +28,7 @@ python3 -m manim example_scenes.py SquareToCircle -pl
 ### Using `virtualenv` and `virtualenvwrapper`
 After installing `virtualenv` and `virtualenvwrapper`
 ```sh
-git clone https://github.com/3b1b/manim.git
+git clone https://github.com/CadenScharpf/manim-cs.git
 mkvirtualenv -a manim -r requirements.txt manim
 python3 -m manim example_scenes.py SquareToCircle -pl
 ```

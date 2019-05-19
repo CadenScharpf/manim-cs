@@ -26,14 +26,11 @@ class ShelfSortScene(Scene):
 
         #Show Array
         self.play(ShowCreation(array)) 
-        print(array.element_list[0].key)
-        print(array.element_list[1].key)
-        print(array.element_list[2].key)
         self.selection_sort(array)
 
     def selection_sort(self, array):
         i = 0
-        while i < len(array.element_list):
+        while i < len(array.element_list)-1:
             min_idx = i
             self.fade_to(array, i, IDX_COLOR)
 
