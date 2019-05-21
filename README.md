@@ -6,7 +6,7 @@ Manim-CS is powered by the Manim Animation Engine and and the included Math Obje
 
 ## Version 1.0
 
-Version 1.0 brings added support for rendering arrays. The following classes have been added to the library:
+Version 1.0 brings added support for rendering and manipulating arrays. The following classes have been added to the library:
 
 ### array_element.py
 

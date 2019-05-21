@@ -22,6 +22,7 @@ class ArrayElement(SingleStringTexMobject):
 
     def __init__(self, key, **kwargs):
          digest_config(self, kwargs)
+         assert(isinstance(key, str))
          super().__init__(key)
          if self.name is None:
             self.name = self.__class__.__name__
@@ -31,36 +32,25 @@ class ArrayElement(SingleStringTexMobject):
 
 
     # Background rectangle
-    def add_background_rectangle(self, color, buff, opacity=0.75, **kwargs):
+    def add_background_rectangle(self, color, buff, opacity, **kwargs):
  
         from manimlib.mobject.shape_matchers import BackgroundRectangle
         self.background_rectangle = BackgroundRectangle(
             self, color=color,
             buff = buff,
-            fill_opacity=opacity,
+            fill_opacity=.75,
             **kwargs
         )
         self.add_to_back(self.background_rectangle)
         return self
 
-    def add_background_rectangle_to_submobjects(self, **kwargs):
-        for submobject in self.submobjects:
-            submobject.add_background_rectangle(**kwargs)
-        return self
-
-    def add_background_rectangle_to_family_members_with_points(self, **kwargs):
-        for mob in self.family_members_with_points():
-            mob.add_background_rectangle(**kwargs)
-        return self
-
 
     def init_colors(self, **kwargs):
          if 'default_color' in kwargs:
-             print(kwargs.get("default_color"))
              self.default_color = Color(kwargs.get("default_color"))
-             #self.color = Color(kwargs.get("default_color"))
-         #else:
-            #self.color = Color(self.default_color)
+             self.color = Color(kwargs.get("default_color"))
+         else:
+            self.color = Color(self.default_color)
          #background rectangle
          self.add_background_rectangle(self.default_color, self.buff, self.opacity)
          return self

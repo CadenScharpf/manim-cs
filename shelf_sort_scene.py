@@ -8,7 +8,7 @@ import pyclbr
 # Default Array Configuration
 ARRAY_CONFIG = {
     "default_color" : BLUE,
-    "buff" : MED_LARGE_BUFF,
+    "buff" : 0,
     "opacity" : .75
     }
 # Index Color Configuration

@@ -11,7 +11,7 @@ keys = ("11", "15", "12", "16", "14", "17")
 
 ARRAY_CONFIG = {
     "default_color" : BLUE,
-    "buff" : MED_LARGE_BUFF,
+    "buff" : .1,
     "opacity" : .75
 }
 
@@ -19,9 +19,9 @@ class TestScenes(Scene):
 
     def construct(self):
         # Initialize Array Object
-        array = Array(*keys, **ARRAY_CONFIG)
+        elm = ArrayElement("1", **ARRAY_CONFIG)
         #Show Array
-        self.play(ShowCreation(array))
+        self.play(ShowCreation(elm))
         
 
     def fade_to(self, array, element, color):
