@@ -10,8 +10,8 @@ import pyclbr
 keys = ("11", "15", "12", "16", "14", "17")
 
 ARRAY_CONFIG = {
-    "default_color" : BLUE,
-    "buff" : .1,
+    "default_color" : GREEN,
+    "buff" : MED_LARGE_BUFF,
     "opacity" : .75
 }
 

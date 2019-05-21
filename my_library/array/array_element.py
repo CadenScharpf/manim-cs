@@ -16,6 +16,7 @@ import pyclbr
 class ArrayElement(SingleStringTexMobject):
     CONFIG = {
             "default_color" : WHITE,
+            "color" : WHITE,
             "buff" : .5,
             "opacity" : .75
          }
@@ -28,8 +29,16 @@ class ArrayElement(SingleStringTexMobject):
             self.name = self.__class__.__name__
          assert(isinstance(key, str))
          self.key = key
-         self.init_colors(**kwargs)
+         self.initialize_colors(**kwargs)
 
+    # Init methods
+    def initialize_colors(self, **kwargs):
+         if 'default_color' in kwargs:
+             self.default_color = Color(kwargs.get("default_color"))
+             self.color = Color(kwargs.get("default_color"))
+         #background rectangle
+         self.add_background_rectangle(self.default_color, self.buff, self.opacity)
+         return self
 
     # Background rectangle
     def add_background_rectangle(self, color, buff, opacity, **kwargs):
@@ -43,17 +52,6 @@ class ArrayElement(SingleStringTexMobject):
         )
         self.add_to_back(self.background_rectangle)
         return self
-
-
-    def init_colors(self, **kwargs):
-         if 'default_color' in kwargs:
-             self.default_color = Color(kwargs.get("default_color"))
-             self.color = Color(kwargs.get("default_color"))
-         else:
-            self.color = Color(self.default_color)
-         #background rectangle
-         self.add_background_rectangle(self.default_color, self.buff, self.opacity)
-         return self
 
     # Color 
     def set_color(self, color, family=True):
