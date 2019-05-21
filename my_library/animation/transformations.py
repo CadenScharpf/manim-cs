@@ -9,3 +9,11 @@ class FadeTo(ApplyMethod):
 class FadeToOrigionalColor(ApplyMethod):
     def __init__(self, ArrayElement, **kwargs):
         ApplyMethod.__init__(self, ArrayElement.to_original_color, **kwargs)
+
+class Fade(ApplyMethod):
+   def __init__(self, ArrayElement, **kwargs):
+        ApplyMethod.__init__(self, ArrayElement.fade, **kwargs)
+
+class Brighten(ApplyMethod):
+   def __init__(self, ArrayElement, **kwargs):
+        ApplyMethod.__init__(self, ArrayElement.brighten, **kwargs)

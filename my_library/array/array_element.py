@@ -15,6 +15,7 @@ import pyclbr
 # ####################################################
 class ArrayElement(SingleStringTexMobject):
     CONFIG = {
+            "key": 0,
             "default_color" : WHITE,
             "color" : WHITE,
             "buff" : .5,
@@ -74,5 +75,16 @@ class ArrayElement(SingleStringTexMobject):
         self.color = self.default_color
         return self
 
-    def dim(self):
-        self.set_color()
+    def fade(self):
+        from colormap import rgb2hex
+
+        red = self.color.get_red()*255
+        red = int(round(red - (red * .3)))
+        green = self.color.get_green()*255
+        green = int(round(green - (green * .3)))
+        blue = self.color.get_blue()*255
+        blue = int(round(blue - (blue * .3)))
+
+        self.set_color(rgb2hex(red,green,blue))
+        return self
+    

@@ -8,7 +8,7 @@ import pyclbr
 # Default Array Configuration
 ARRAY_CONFIG = {
     "default_color" : BLUE,
-    "buff" : 0,
+    "buff" : .5,
     "opacity" : .75
     }
 # Index Color Configuration
@@ -20,11 +20,7 @@ keys = ("11", "15", "12", "16", "14", "17")
 
 class ShelfSortScene(Scene):
     def construct(self):
-
-        # Initialize Array Object
         array = Array(*keys, **ARRAY_CONFIG)
-
-        #Show Array
         self.play(ShowCreation(array)) 
         self.selection_sort(array)
 
@@ -32,25 +28,22 @@ class ShelfSortScene(Scene):
         i = 0
         while i < len(array.element_list)-1:
             min_idx = i
-            self.fade_to(array, i, IDX_COLOR)
+            self.fade_to( array[i], IDX_COLOR)
 
             j = i+1
             while j < len(array.element_list):
                 if int(array.element_list[j].key) < int(array.element_list[min_idx].key) and min_idx == i:
-                    self.fade_to(array, i, ARRAY_CONFIG['default_color'])
+                    self.fade_to(array[i], ARRAY_CONFIG['default_color'])
                 elif int(array.element_list[j].key) < int(array.element_list[min_idx].key):
                     min_idx = j
-                self.flash(array, j, SUBIDX_COLOR)
+                
                 j = j+1
 
             if min_idx != i:
                 self.swap(array, i, min_idx)
                 print("ho")
             i = i+1
-
-                
-            
-
+    # Helpers
     def swap(self, array, elm1, elm2):
         elm1_center = array.element_list[elm1].get_center()
         elm2_center = array.element_list[elm2].get_center()
@@ -66,17 +59,12 @@ class ShelfSortScene(Scene):
         array.element_list[elm1] = array.element_list[elm2]
         array.element_list[elm2] = temp
 
-    def fade_to(self, array, element, color):
-        self.play(FadeTo(array.element_list[element],color))
+    def fade_to(self, ArrayElement, color):
+        self.play(FadeTo(ArrayElement,color))
 
-    def flash(self, array, element, color):
-        old_color = array.element_list[element].default_color
-        self.play(FadeTo(array.element_list[element],color))
-        self.play(FadeToOrigionalColor(array.element_list[element]))
+    def dim(self, ArrayElement):
+        self.play(Fade(ArrayElement))
 
-        
-        
-        
 
 
 if __name__ == "__main__":

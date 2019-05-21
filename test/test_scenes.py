@@ -10,7 +10,7 @@ import pyclbr
 keys = ("11", "15", "12", "16", "14", "17")
 
 ARRAY_CONFIG = {
-    "default_color" : GREEN,
+    "default_color" : YELLOW,
     "buff" : MED_LARGE_BUFF,
     "opacity" : .75
 }
@@ -22,10 +22,14 @@ class TestScenes(Scene):
         elm = ArrayElement("1", **ARRAY_CONFIG)
         #Show Array
         self.play(ShowCreation(elm))
+        self.dim(elm)
         
 
-    def fade_to(self, array, element, color):
-        self.play(FadeTo(array.element_list[element],color))
+    def fade_to(self, ArrayElement, color):
+        self.play(FadeTo(ArrayElement,color))
+    
+    def dim(self, ArrayElement):
+        self.play(Fade(ArrayElement))
 
 
 

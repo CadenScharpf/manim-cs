@@ -14,18 +14,18 @@ import pyclbr
 #       opacity <= 1), 
 #####################################################
 class Array(Mobject):
+    CONFIG = {
+    "default_color" : BLUE,
+    "buff" : .5,
+    "opacity" : .75
+    }
+
     def __init__(self, *key_array, **kwargs):
         if not all([isinstance(key, str) for key in key_array]):
             raise Exception("All keys must be of type string")
         digest_config(self, kwargs)
 
-        self.element_styles = {
-            "default_color" : self.color,
-            "buff" : self.buff, 
-            "opacity" : self.opacity,
-        }
-
-        self.element_list = get_element_list(self, *key_array, **self.element_styles)
+        self.element_list = get_element_list(self, *key_array, **self.CONFIG)
         super().__init__(**kwargs)
         self.add(*self.element_list)
         self.arrange()
