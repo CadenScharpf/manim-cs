@@ -1,6 +1,6 @@
 # Manim-CS Computational Animation Engine
 
-This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for rendering sorting algorithm, tree structure, and memory simulations.
+This is a modified clone of the 3B1B library for animating with python. Specifically, this version is tweaked to to provide support for rendering sorting algorithms, tree structure, and memory simulations.
 
 Manim-CS is powered by the Manim Animation Engine and and the included Math Object library. To install, follow the official doccumentation below.
 
