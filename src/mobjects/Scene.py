@@ -9,22 +9,6 @@ algorithms_dir = os.path.join(current_dir, '..', 'algorithms')
 sys.path.append(algorithms_dir)
 
 from sorting import Sorting
-
-""" class SquareUpThenDown(Animation):
-    def __init__(self, square, direction=UP, **kwargs):
-
-        # Set the starting and ending positions of the square
-        self.start_position = square.get_center()
-        self.end_position = square.get_center() + direction
-        squares = VGroup(*[Square() for i in range(10)])
-        # Call the __init__ method of the Animation class
-        super().__init__(square, **kwargs)
-    
-    def interpolate(self, alpha):
-        # Define the movement of the square
-        new_position = interpolate(self.start_position, self.end_position, alpha)
-        self.mobject.move_to(new_position)  """
-
                   
 class Scene(Scene):
     def construct(self):
@@ -32,7 +16,7 @@ class Scene(Scene):
         #arr = VGroup(*[IntegerSortableMObject() for i in range(5)])
         testElems = SortSet([3, 6, 1, 8, 1, 5, 7, 0 ]).arrange(buff=0.5).center()
         self.add(testElems)
-        Sorting.bubble_sort(self, testElems)
+        Sorting.insertion_sort(self, testElems)
         
 
 """ class Scene(Scene):

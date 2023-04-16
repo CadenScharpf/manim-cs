@@ -2,13 +2,14 @@ import os
 import sys
 
 from matplotlib.sankey import UP
+import numpy as np
 
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 mobs_dir = os.path.join(current_dir, '..', 'mobjects')
 sys.path.append(mobs_dir)
 import sort_set
-from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED
+from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED, Line
 
 class Sorting:
 
@@ -85,9 +86,6 @@ class Sorting:
         return mObjArr
 
     def bubble_sort(scene: Scene, mObjArr: sort_set.SortSet):
-        defaultColor = mObjArr[0].get_color()
-        mIdxColor = YELLOW
-        jColor = WHITE
 
         dCodeBlockColor = WHITE
 
@@ -143,6 +141,32 @@ class Sorting:
         ApplyMethod(mObjArr[0].set_color, GREEN)
         scene.play(FadeOut(linePtr), FadeOut(iGroup), FadeOut(codeBlock))
         return mObjArr
+
+    def insertion_sort(scene: Scene, mObjArr: sort_set.SortSet):
+            centers = [elem.get_center() for elem in mObjArr.submobjects]
+
+            
+    
+            for i in range(1, len(mObjArr)):
+
+                key = mObjArr[i]
+
+                if(mObjArr[i-1] > key):
+                    keyCopy = key.copy().move_to(key.get_center() + UP*2)
+
+                    scene.play(FadeIn(keyCopy))
+
+                    j = i-1
+                    while j >= 0 and mObjArr[j] > key:
+                        shift_index(scene, mObjArr, j, centers, direction="right")
+                        # swap_indices(scene, mObjArr, j, j+1, useBuffer=False)
+                        j = j-1
+                    
+                    mObjArr[j+1] = keyCopy
+                    scene.play(ApplyMethod(keyCopy.move_to, centers[j+1]))
+
+            return mObjArr
+    
     
     
 
@@ -151,6 +175,23 @@ def swap_indices(scene, arr, i, j, useBuffer=False):
         arr[i], arr[j] = arr[j], arr[i]
         if useBuffer: buffer_swap(scene, arr[i], arr[j]) 
         else: direct_swap(scene, arr[i], arr[j])
+
+def get_divider_line_coordinates(scene, arr, i, j):
+    midpoint = None
+    if((i<0 | j<=i) and j < len(arr)):
+        midpoint = arr[j].get_center()
+    else:
+        midpoint = (arr[i].get_center() + arr[j].get_center())/2
+    return np.array([midpoint+UP, midpoint+DOWN, 0])
+        
+
+def shift_index(scene, arr, i, centers, direction="left"):
+    offset = -1 if direction == "left" else 1
+    shift_pos = arr[i+offset].get_center()
+    arr[i+offset] = arr[i]
+    FadeOut(arr[i])
+    scene.play(ApplyMethod(arr[i].move_to, centers[i+offset]))
+
 
 # direct swap: 
 # Directly swap positions and indices i,j in the arr vgroup, without using a buffer
