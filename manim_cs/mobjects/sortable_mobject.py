@@ -4,7 +4,7 @@ from typing import TypeVar
 from manim import VGroup, Square, Mobject, Tex
 from matplotlib.sankey import DOWN
 
-T = TypeVar('T', bound='SortableMObject')
+T = TypeVar('T', bound='SortableMobject')
 
 class SortableMobject(ABC, VGroup):
     value = 0
