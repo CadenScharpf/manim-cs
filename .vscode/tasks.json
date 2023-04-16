@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Manim",
+            "type": "shell",
+            "command": "manim -ql ${file} ${scene_name}",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+        
+        {
+            "label": "Run Manim",
+            "type": "shell",
+            "command": "manim -ql src/mobjects/Scene.py",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

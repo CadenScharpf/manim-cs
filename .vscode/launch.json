@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Manim Scene",
+            "type": "python",
+            "request": "launch",
+            "program": "/home/caden/.local/bin/manim",
+            "cwd": "${workspaceFolder}/src/mobjects/",
+            "args": [
+                "${fileBasenameNoExtension}.py",
+        "$(python -c \"import importlib.util;spec = importlib.util.spec_from_file_location('', '${file}'); module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module); print([name for name, obj in module.__dict__.items() if isinstance(obj, type) and issubclass(obj, Scene)][0])\")"
+            ],
+            "console": "integratedTerminal",
+        }
+        
+        
+    ]
+}
