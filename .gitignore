@@ -1,2 +1,5 @@
 **/__pycache__
 **/media/
+build/
+dist/
+manim_cs.egg-info/

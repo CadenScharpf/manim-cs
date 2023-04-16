@@ -1,14 +1,11 @@
 import os
 import random
 from manim import *
-from sort_set import SortSet
-from sortable_mobject import IntegerSortableMObject, SizeSortableMobject
 
-current_dir = os.path.dirname(os.path.abspath(__file__))
-algorithms_dir = os.path.join(current_dir, '..', 'algorithms')
-sys.path.append(algorithms_dir)
+from manim_cs.mobjects.sort_set import SortSet
+from manim_cs.mobjects.sortable_mobject import IntegerSortableMObject, SizeSortableMobject
+from manim_cs.algorithms.sorting import Sorting
 
-from sorting import Sorting
                   
 class Scene(Scene):
     def construct(self):

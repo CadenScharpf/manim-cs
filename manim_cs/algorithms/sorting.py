@@ -8,13 +8,13 @@ import numpy as np
 current_dir = os.path.dirname(os.path.abspath(__file__))
 mobs_dir = os.path.join(current_dir, '..', 'mobjects')
 sys.path.append(mobs_dir)
-import sort_set
+from manim_cs.mobjects.sort_set import SortSet
 from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED, Line
 
 class Sorting:
 
     @staticmethod
-    def selection_sort(scene: Scene, mObjArr: sort_set.SortSet):
+    def selection_sort(scene: Scene, mObjArr: SortSet):
         defaultColor = mObjArr[0].get_color()
         mIdxColor = YELLOW
         jColor = WHITE
@@ -85,7 +85,7 @@ class Sorting:
         scene.play(FadeOut(linePtr), FadeOut(iGroup), FadeOut(codeBlock))
         return mObjArr
 
-    def bubble_sort(scene: Scene, mObjArr: sort_set.SortSet):
+    def bubble_sort(scene: Scene, mObjArr: SortSet):
 
         dCodeBlockColor = WHITE
 
@@ -142,7 +142,7 @@ class Sorting:
         scene.play(FadeOut(linePtr), FadeOut(iGroup), FadeOut(codeBlock))
         return mObjArr
 
-    def insertion_sort(scene: Scene, mObjArr: sort_set.SortSet):
+    def insertion_sort(scene: Scene, mObjArr: SortSet):
             centers = [elem.get_center() for elem in mObjArr.submobjects]
 
             

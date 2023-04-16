@@ -19,7 +19,7 @@
         {
             "label": "Run Manim",
             "type": "shell",
-            "command": "manim -ql src/mobjects/Scene.py",
+            "command": "manim -ql Scene.py",
             "options": {
                 "cwd": "${workspaceFolder}"
             },
