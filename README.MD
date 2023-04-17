@@ -30,6 +30,6 @@ This is an extension of the 3B1B library for animating with python. Manim CS pro
 - <div><h3 >LaTeX</h3> Follow the <a href="https://www.latex-project.org/get/"> Official Documentation </a> to install LaTeX on your system. 
 ## Installation
 
-- <h4>Option 1: Package Installer for Python</h4> Install the official <a href="https://docs.manim.community/en/stable/installation.html"> PyPy Release </a> by running: 
+- <h4>Option 1: Package Installer for Python</h4> Install the official <a href="https://test.pypi.org/project/manim-cs/"> PyPy Release </a> by running: 
 ```bash
 $ pip install -i https://test.pypi.org/simple/ manim-cs
