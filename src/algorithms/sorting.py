@@ -8,7 +8,7 @@ import numpy as np
 current_dir = os.path.dirname(os.path.abspath(__file__))
 mobs_dir = os.path.join(current_dir, '..', 'mobjects')
 sys.path.append(mobs_dir)
-from manim_cs.mobjects.sort_set import SortSet
+from src.mobjects.sort_set import SortSet
 from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED, Line
 
 class Sorting:
@@ -144,9 +144,6 @@ class Sorting:
 
     def insertion_sort(scene: Scene, mObjArr: SortSet):
             centers = [elem.get_center() for elem in mObjArr.submobjects]
-
-            
-    
             for i in range(1, len(mObjArr)):
 
                 key = mObjArr[i]

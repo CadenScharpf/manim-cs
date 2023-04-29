@@ -1,7 +1,7 @@
 import random
 from manim import VGroup, Square, Mobject, Tex
 
-from manim_cs.mobjects.sortable_mobject import IntegerSortableMObject
+from src.mobjects.sortable_mobject import IntegerSortableMObject
 
 
 class SortSet(VGroup):

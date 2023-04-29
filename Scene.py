@@ -1,37 +1,70 @@
 import os
-import random
+import sys
 from manim import *
+current_dir = os.path.dirname(os.path.abspath(__file__))
+algorithms_dir = os.path.join(current_dir, '.', 'src/algorithms')
+mob_dir = os.path.join(current_dir, '.', 'src/mobjects')
+sys.path.append(algorithms_dir)
+sys.path.append(mob_dir)
+from src.mobjects.sort_set import SortSet
+from src.mobjects.sortable_mobject import IntegerSortableMObject, SizeSortableMobject
+from src.algorithms.sorting import Sorting
+from sorting import Sorting
+ 
+commands = {
+    "array": ["insertion-sort", "bubble-sort", "selection-sort", "merge-sort", "quick-sort", "heap-sort", "radix-sort", "counting-sort", "bucket-sort"] ,
+    "tree" : []
+}
 
-from manim_cs.mobjects.sort_set import SortSet
-from manim_cs.mobjects.sortable_mobject import IntegerSortableMObject, SizeSortableMobject
-from manim_cs.algorithms.sorting import Sorting
+def getInputArray(index):
+    int_array = []
+    if len(sys.argv) > index+1:
+        for arg in sys.argv[index:]:
+            int_array.append(int(arg))
+    else:
+        print("MANIM-CS-ERR: Please enter a list of integers to sort")
+        raise ValueError("Input value must be an integer.")
+    return int_array
 
                   
 class Scene(Scene):
+    input = None
     def construct(self):
         # Create 10 squares and add them to a VGroup
         #arr = VGroup(*[IntegerSortableMObject() for i in range(5)])
-        testElems = SortSet([3, 6, 1, 8, 1, 5, 7, 0 ]).arrange(buff=0.5).center()
-        self.add(testElems)
-        Sorting.insertion_sort(self, testElems)
-        
+        if(len(sys.argv) < 4):
+            print("MANIM-CS-ERR: No command provided")
+            raise ValueError("No command provided")
 
-""" class Scene(Scene):
-    def construct(self):
-        # create 10 Text onjects and add them to a VGroup
-        #arr = VGroup(*[IntegerSortablBeMObject() for i in range(5)])
-        arr = VGroup(
-            Text("1.    for i = 0 to n-1 do"),
-            Text("2.        min_idx = i"),
-            Text("3.        for j = i+1 to n-1 do"),
-            Text(" 4.            if (A[j] < A[min_idx])"),
-            Text("5.            min_idx = j"),
-            Text("6.            swap A[min_idx] with A[i]")
-        ).scale(0.25).arrange(DOWN, aligned_edge=LEFT).to_edge(LEFT+UP)
+        if sys.argv[3] in commands.get("array"):
+            elems = SortSet( getInputArray(4)).arrange(buff=0.5).center()
+            self.add(elems)
+            match sys.argv[3]:
+                case "insertion-sort":
+                    print("MANIM-CS-INFO: Insertion Sort")
+                    Sorting.insertion_sort(self, elems)
+                case "bubble-sort":
+                    print("MANIM-CS-INFO: Bubble Sort")
+                    Sorting.bubble_sort(self, elems)
+                case "selection-sort":
+                    print("MANIM-CS-INFO: Selection Sort")
+                    Sorting.selection_sort(self, elems)
+                case "merge-sort":
+                    print("MANIM-CS-INFO: Merge Sort")
+                case "quick-sort":
+                    print("MANIM-CS-INFO: Quick Sort")
+                case "heap-sort":
+                    print("MANIM-CS-INFO: Heap Sort")
+                case "radix-sort":
+                    print("MANIM-CS-INFO: Radix Sort")
+                case "counting-sort":
+                    print("MANIM-CS-INFO: Counting Sort")
+                case "bucket-sort":
+                    print("MANIM-CS-INFO: Bucket Sort")
+                case _:
+                    print("MANIM-CS-ERR: Command not recognized")
+                    raise ValueError("Command not recognized")
 
-        self.play(Write(arr)) 
-
-     testElems[0].animate.move_to( UP) """
 class Swap(Animation):
     def __init__(self, arr: SortSet, i, j, **kwargs):
         self.iLoc = arr[i].get_center()
