@@ -6,8 +6,8 @@ algorithms_dir = os.path.join(current_dir, '.', 'src/algorithms')
 mob_dir = os.path.join(current_dir, '.', 'src/mobjects')
 sys.path.append(algorithms_dir)
 sys.path.append(mob_dir)
-from src.mobjects.sort_set import SortSet
-from src.mobjects.sortable_mobject import IntegerSortableMObject, SizeSortableMobject
+from src.mobjs.sort_set import SortSet
+from src.mobjs.sortable_mobject import IntegerSortableMObject, SizeSortableMobject
 from src.algorithms.sorting import Sorting
 from sorting import Sorting
  

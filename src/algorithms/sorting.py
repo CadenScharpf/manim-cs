@@ -4,11 +4,16 @@ import sys
 from matplotlib.sankey import UP
 import numpy as np
 
+from mobjs.sort_set import SortSet
 
+
+
+""" 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 mobs_dir = os.path.join(current_dir, '..', 'mobjects')
 sys.path.append(mobs_dir)
-from src.mobjects.sort_set import SortSet
+from src.mobjs.sort_set import SortSet """
+
 from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED, Line
 
 class Sorting:

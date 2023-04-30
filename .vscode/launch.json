@@ -5,16 +5,15 @@
     "version": "0.2.0",
     "configurations": [
 
-    /*     {
+         {
             "name": "Manim Scene",
             "type": "python",
             "request": "launch",
-            "program": "/home/caden/.local/bin/manim",
+            "program": "${workspaceFolder}/src/manimcs.py",
             "cwd": "${workspaceFolder}",
-            "args": [
-                "${fileBasenameNoExtension}.py","insertion-sort",  "1","2","3","4","5"],
+            "args": ["selection-sort",  "2","1","3","4","5"],
             "console": "integratedTerminal",
-        }, */
+        }/* , 
         {
             "name": "Manim Default Scene",
             "type": "python",
@@ -23,7 +22,7 @@
             "console": "integratedTerminal",
             "args": ["-ql", "Scene.py", "bubble-sort", "1", "2", "3", "4", "5"],
             "cwd": "${workspaceFolder}"
-        }
+        } */
         
         
     ]

@@ -1,2 +1,2 @@
-from .mobjects import *
+from .mobjs import *
 from .algorithms import *
