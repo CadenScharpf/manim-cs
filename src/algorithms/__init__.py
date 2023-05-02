@@ -1,1 +1,1 @@
-from .sorting import Sorting
+from .array_sort import *

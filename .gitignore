@@ -2,5 +2,6 @@
 **/media/
 build/
 dist/
-manim_cs.egg-info/
+manimcs.egg-info/
 output/
+.venv/

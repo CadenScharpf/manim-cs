@@ -1,9 +1,0 @@
-version: '3'
-
-services:
-  manim:
-    build:
-      context: .
-    command: []
-    volumes:
-      - ./output:/app/output

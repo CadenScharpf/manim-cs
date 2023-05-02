@@ -4,7 +4,7 @@ import sys
 from matplotlib.sankey import UP
 import numpy as np
 
-from mobjs.sort_set import SortSet
+from ..mobjs.sort_set import SortSet
 
 
 
@@ -16,7 +16,7 @@ from src.mobjs.sort_set import SortSet """
 
 from manim import FadeIn, FadeOut, Animation, VGroup, Square, Mobject, Tex, Scene, ApplyMethod, YELLOW, GREEN, GREY, Text, DOWN, LEFT, UP, interpolate, Write, WHITE, Arrow, RIGHT, RED, Line
 
-class Sorting:
+class ArraySort:
 
     @staticmethod
     def selection_sort(scene: Scene, mObjArr: SortSet):
@@ -90,6 +90,7 @@ class Sorting:
         scene.play(FadeOut(linePtr), FadeOut(iGroup), FadeOut(codeBlock))
         return mObjArr
 
+    @staticmethod
     def bubble_sort(scene: Scene, mObjArr: SortSet):
 
         dCodeBlockColor = WHITE
@@ -147,6 +148,7 @@ class Sorting:
         scene.play(FadeOut(linePtr), FadeOut(iGroup), FadeOut(codeBlock))
         return mObjArr
 
+    @staticmethod
     def insertion_sort(scene: Scene, mObjArr: SortSet):
             centers = [elem.get_center() for elem in mObjArr.submobjects]
             for i in range(1, len(mObjArr)):
@@ -169,6 +171,10 @@ class Sorting:
 
             return mObjArr
     
+    @staticmethod
+    def unImplementedAlgorithm(scene: Scene, elems: SortSet):
+        print("MANIM-CS-ERR: Algorithm not implemented")
+        raise NotImplementedError("Algorithm not implemented")
     
     
 
