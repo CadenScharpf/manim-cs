@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf-8'
 
 setup(
     name='manimcs',
-    version='0.4.1',
+    version='0.4.2',
     packages=find_packages(),
     install_requires=[
         'manim==0.17.3',
