@@ -31,9 +31,9 @@ class ManimCsEngine:
     }
     def __init__(self, command, *args, **kwargs):
         if command in self.commands.get("array"):
-            if not 'inputValues' in kwargs:
+            if not 'inputValue' in kwargs:
                 print("MANIM-CS-ERR: Please enter a list of integers to sort")
-                raise ValueError("Input value must be an integer.")
+                raise ValueError("MANIM-CS-ERR: Please enter a list of integers to sort")
             if 'output_dir' in kwargs:
                 self.output_dir = kwargs.get('output_dir')
             self.init_config(self.output_dir)
@@ -77,7 +77,7 @@ def getInputArray(offset):
         raise ValueError("Input value must be an integer.")
     return int_array
 
-if __name__ == "__main__":
+""" if __name__ == "__main__":
     scene = None
     config.output_file = output_dir + "/video/"+time.strftime("%Y%m%d-%H%M%S")+".mp4"
     commands = {
@@ -113,4 +113,4 @@ if __name__ == "__main__":
     renderer = ManimCSRenderer(scene)
 
     # Call the render_scene method to render the scene
-    renderer.render_scene()
+    renderer.render_scene() """
