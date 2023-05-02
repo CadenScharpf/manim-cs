@@ -3,3 +3,4 @@
 build/
 dist/
 manim_cs.egg-info/
+output/

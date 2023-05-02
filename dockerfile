@@ -1,15 +1,19 @@
-FROM manimcommunity/manim:stable
+# Use the official manim community image as the base image
+FROM manimcommunity/manim:latest
 
-# Set the working directory
+# Set the working directory to /app
 WORKDIR /app
+
+USER root
+
+# Copy the source code from the current directory to /app in the container
 COPY . /app
+RUN chmod +x -R /app
 
-# Copy the entrypoint script
-#COPY entrypoint.sh /usr/local/bin/
-#RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# Define the entrypoint command
-#ENTRYPOINT ["entrypoint.sh"]
 
-# Define the command to run when the container starts
-#CMD ["manim", "-h"]
+# Define an environment variable to set the PYTHONPATH to include /app
+ENV PYTHONPATH "${PYTHONPATH}:/app"
+
+# Define an entrypoint command to run your code with arguments
+ENTRYPOINT ["python", "/app/src/manimcs.py", "insertion-sort", "5", "4", "3", "2", "1"]
