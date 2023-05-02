@@ -48,6 +48,7 @@ class ManimCsEngine:
         try:
             renderer = ManimCSRenderer(self.scene)
             renderer.render_scene()
+            return config.output_file
         except Exception as e:
             print("MANIM-CS-ERR: Failed to generate animation")
             print(e)
