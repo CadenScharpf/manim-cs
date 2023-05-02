@@ -7,18 +7,13 @@ from ..renderer import ManimCSRenderer
 from ..mobjs import SortableMobject, SVGMobject,  SortSet
 from ..scene import ArraySortScene
 
-output_dir = "/home/caden/developer/manim-cs/output"
+
 #output_dir = "/app/output"
-config.tex_dir = output_dir + "/tex"
-config.media_width = "1920"
-config.frame_rate = 30
-config.output_file = output_dir + "/video/scene.mp4"
-config.tex_dir = output_dir + "/tex"
-config.text_dir = output_dir + "/text"
-config.partial_movie_dir = output_dir + "/video/partial_movie_files"
+
 
 class ManimCsEngine:
     scene = None
+    output_dir = os.path.join(os.path.dirname(__file__), 'output')
     commands = {
         "array": {
             "insertion-sort": ArraySort.insertion_sort,
@@ -34,16 +29,33 @@ class ManimCsEngine:
             
         }
     }
-    def __init__(self, command, elems):
-        config.output_file = output_dir + "/video/"+time.strftime("%Y%m%d-%H%M%S")+".mp4"
+    def __init__(self, command, *args, **kwargs):
         if command in self.commands.get("array"):
+            if not 'inputValues' in kwargs:
+                print("MANIM-CS-ERR: Please enter a list of integers to sort")
+                raise ValueError("Input value must be an integer.")
+            if 'output_dir' in kwargs:
+                self.output_dir = kwargs.get('output_dir')
+            self.init_config(self.output_dir)
+
+
+            elems = kwargs.get("inputValues")
             self.scene = ArraySortScene(self.commands.get("array").get(command), SortSet(elems))
         elif command in self.commands.get("tree"):
             print("MANIM-CS-INFO: Tree command")
         else:
             print("MANIM-CS-ERR: Command not recognized")
             raise ValueError("Command not recognized")
-    
+    def init_config(self, output_dir):
+        if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+
+        config.media_width = "1920"
+        config.frame_rate = 30
+        config.output_file = output_dir +"/"+ time.strftime("%Y%m%d-%H%M%S")+".mp4"
+        config.tex_dir = output_dir + "/tex"
+        config.text_dir = output_dir + "/text"
+        config.partial_movie_dir = output_dir + "/video/partial_movie_files"
     def generate(self):
         try:
             renderer = ManimCSRenderer(self.scene)

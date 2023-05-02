@@ -3,5 +3,6 @@
 build/
 dist/
 manimcs.egg-info/
-output/
+**/output/
 .venv/
+**/*.mp4
