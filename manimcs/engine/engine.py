@@ -31,7 +31,7 @@ class ManimCsEngine:
     }
     def __init__(self, command, *args, **kwargs):
         if command in self.commands.get("array"):
-            if not 'inputValue' in kwargs:
+            if not 'inputValues' in kwargs:
                 print("MANIM-CS-ERR: Please enter a list of integers to sort")
                 raise ValueError("MANIM-CS-ERR: Please enter a list of integers to sort")
             if 'output_dir' in kwargs:
