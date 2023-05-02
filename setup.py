@@ -1,6 +1,9 @@
+import os
 from setuptools import setup, find_packages
 
-
+with open(os.path.join(os.path.dirname(__file__), 'README.md'), encoding='utf-8') as f:
+    long_description = f.read()
+    
 setup(
     name='manimcs',
     version='0.1',
@@ -12,7 +15,7 @@ setup(
     author='Caden Scharpf',
     author_email='caden.scharpf@icloud.com',
     description='An Animation Library for Explanitory Computer Science Videos',
-    long_description=open("README.MD").read(),
+    long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/CadenScharpf/manim-cs',
     classifiers=[
