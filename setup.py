@@ -1,7 +1,5 @@
 from setuptools import setup, find_packages
 
-with open('README.md', 'r', encoding='utf-8') as f:
-    long_description = f.read()
 
 setup(
     name='manimcs',
@@ -14,7 +12,7 @@ setup(
     author='Caden Scharpf',
     author_email='caden.scharpf@icloud.com',
     description='An Animation Library for Explanitory Computer Science Videos',
-    long_description=long_description,
+    long_description=open("README.MD").read(),
     long_description_content_type='text/markdown',
     url='https://github.com/CadenScharpf/manim-cs',
     classifiers=[
