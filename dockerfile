@@ -7,13 +7,14 @@ WORKDIR /app
 USER root
 
 # Copy the source code from the current directory to /app in the container
-COPY . /app
+COPY ./src /app
 RUN chmod +x -R /app
-
-
 
 # Define an environment variable to set the PYTHONPATH to include /app
 ENV PYTHONPATH "${PYTHONPATH}:/app"
 
 # Define an entrypoint command to run your code with arguments
-ENTRYPOINT ["python", "/app/src/manimcs.py", "insertion-sort", "5", "4", "3", "2", "1"]
+ENTRYPOINT ["python", "/app/manimcs.py"]
+
+# Expose the /app/output directory as a volume
+VOLUME ["/app/output"]

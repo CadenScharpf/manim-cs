@@ -11,7 +11,7 @@ config.media_width = "1920"
 config.frame_rate = 30
 config.output_file = output_dir + "/video/scene.mp4"
 config.tex_dir = output_dir + "/tex"
-config.text_dir = output_dir + "/tex"
+config.text_dir = output_dir + "/text"
 config.partial_movie_dir = output_dir + "/video/partial_movie_files"
 
 class ArraySortScene(Scene):
