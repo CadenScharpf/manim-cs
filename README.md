@@ -14,7 +14,7 @@
 </p>
 <hr />
 
-This is an extension of the 3B1B library for animating with python. Manim CS provides additional MObjects and Animation sequinces to provide support for rendering sorting algorithms, tree structure, and memory simulations. 
+This is an extension of the 3B1B library for animating with python. Manim CS supplies additional MObjects and Animation sequinces to provide support for rendering sorting algorithms, tree structure, and memory simulations. 
 
 ## Table of Contents:
 - [Web Demo](#Web)
@@ -22,7 +22,7 @@ This is an extension of the 3B1B library for animating with python. Manim CS pro
 -  [Installation](#installation)
 
 
-## Web Demo
+## Web Demo:
 Use the <a href="https://manimcs-demo.cadenscharpf.tech/">Web Demo</a> to try out Manim-CS and create animations without installing anything on your computer: <a href="https://manimcs-demo.cadenscharpf.tech/">https://manimcs-demo.cadenscharpf.tech/</a>
 
 
@@ -30,7 +30,7 @@ Use the <a href="https://manimcs-demo.cadenscharpf.tech/">Web Demo</a> to try ou
 
 - <div><h3 >Manim Community</h3> Follow the <a href="https://docs.manim.community/en/stable/installation.html"> Official Documentation </a> to install the Manim Animation Library for Python 
 - <div><h3 >LaTeX</h3> Follow the <a href="https://www.latex-project.org/get/"> Official Documentation </a> to install LaTeX on your system. 
-## Installation
+## Installation:
 
 - <h4>Option 1: Package Installer for Python</h4> Install the official <a href="https://pypi.org/project/manimcs/"> PyPy Release </a> by running: 
 ```bash
